@@ -29,7 +29,6 @@ git commit -m "Two File 1.README 2.gitignore"
 git push -u origin develop
 
 
-**Raise the PR (Pull Request) against master branch
 
 
 **Explain use of both file into  README.md file
