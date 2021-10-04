@@ -55,6 +55,7 @@ git remote :show the origin (git remote -v to show the URL of fetch and push)
 git push : push (uploded) code to the github 
 git pull : Downloded File from remote repository 
 git stash :temporaty stored the changes , working copy you can work on somethings else
+ 
 
-
+ GIT commands
 
