@@ -1,4 +1,5 @@
 let js = 'amazing';
+
 if (js === 'amazing') alert('TEST')
 
 console.log(40 + 10 + 20 - 50 + 100)
@@ -114,3 +115,45 @@ switch (day) {
 
 const drink = age >= 18 ? 'wine' : 'water';
 console.log(drink)
+
+// Functions
+function myfunction() {
+    console.log('Function Calling');
+}
+myfunction();
+
+function Fruit(apples, oranges) {
+    const juice = `juice with ${apples} apples and ${oranges} oranges`;
+    return juice;
+}
+const juicemsg = Fruit(4, 6);
+console.log(juicemsg)
+
+function cutFruits(fruits) {
+    return fruits * 4;
+}
+cutFruits(4)
+
+const FruitProccesor = function (oranges, apples) {
+    const applesPieces = cutFruits(apples)
+    const orangesPieces = cutFruits(oranges)
+    const results = `${applesPieces} pieces of apple , ${orangesPieces} of Oranges`;
+    return results;
+}
+console.log(FruitProccesor(2, 5));
+
+
+const yearsArry = new Array(2020, 2021, 2022, 2023, 2024, 2025)
+console.log(yearsArry)
+
+const friends = ['ravi', 'jaymish', 'keval'];
+console.log(friends)
+console.log(friends[0])
+console.log(friends[1])
+console.log(friends[2])
+
+console.log(friends.length)
+friends.push('jay');
+console.log(friends)
+friends.pop()
+console.log(friends)
