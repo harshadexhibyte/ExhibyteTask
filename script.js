@@ -244,15 +244,11 @@ let dice = Math.trunc(Math.random() * 6);
 console.log(dice);
 
 'use strict';
-
+//-------------- Demo-Gussy-Number
 const SecretNumber = Math.trunc(Math.random()*20+1);
-// document.querySelector('.number').textContent = SecretNumber;
 
-a = document.querySelector('.message').textContent;
-console.log(a);
-// document.querySelector('.message').textContent = 'Correct Number!';
 
-// document.querySelector('.number').textContent = 13;
+
 let score = document.querySelector('.score').textContent = 20;
 let highscore = 0;
 
@@ -305,3 +301,4 @@ document.querySelector('.again').addEventListener('click',function(){
 
     document.querySelector('body').style.backgroundColor = '#222';
 })
+
