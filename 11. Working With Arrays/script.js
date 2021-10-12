@@ -85,10 +85,107 @@ const createUserName = function (user) {
   return username;
 };
 
+let currentAccount;
+btnLogin.addEventListener("click", function (e) {
+  e.preventDefault();
+  currentAccount = accounts.find(
+    (acc) => acc.username === inputCloseUsername.value
+  );
+  console.log("****************CURRENT ACCOUNT ***************");
+  console.log(currentAccount);
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    labelWelcome.textContent = `WelCome Back ${
+      currentAccount.owner.split(" ")[0]
+    }`;
+    displayMovements(currentAccount.movements);
+  }
+  containerApp.style.opacity = 100;
+});
+
+btnTransfer.addEventListener("click", function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    (acc) => acc.username === inputTransferTo.value
+  );
+  inputTransferAmount.value = inputTransferTo.value = "";
+
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    updateUI(currentAccount);
+  }
+});
+
+btnLoan.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (
+    amount > 0 &&
+    currentAccount.movements.some((mov) => mov >= amount * 0.1)
+  ) {
+    currentAccount.movements.push(amount);
+
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = "";
+});
+
+btnClose.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      (acc) => acc.username === currentAccount.username
+    );
+    console.log(index);
+
+    t;
+    accounts.splice(index, 1);
+
+    containerApp.style.opacity = 0;
+  }
+
+  inputCloseUsername.value = inputClosePin.value = "";
+});
+
+btnClose.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      (acc) => acc.username === currentAccount.username
+    );
+    accounts.splice(index, 1);
+    console.log(index, "***********************findIndex*********************");
+  }
+});
+
 console.log("****************USER NAME *******************");
 console.log(createUserName("Harshad satasiya"));
 const user = "Harshad Satasiya";
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+labelSumIn.textContent = `2000 EUR`;
+labelSumOut.textContent = `3000 EUR`;
+labelSumInterest.textContent = `62.24 EUR`;
 /////////////////////////////////////////////////
 
 let arr = ["a", "b", "c", "d", "e"];
@@ -190,3 +287,69 @@ const calAverageHumanAge = function (ages) {
 };
 calAverageHumanAge([1, 2, 4, 1, 1, 15, 8, 3]);
 calAverageHumanAge([2, 4, 5, 69, 7, 8, 9, 10]);
+console.log(movements);
+const deposites = movements.filter(function (mov) {
+  return mov > 0;
+});
+
+console.log(movements);
+console.log(deposites);
+
+const depositeForNagative = [];
+for (const mov of movements) if (mov < 0) depositeForNagative.push(mov);
+console.log(depositeForNagative);
+
+const balance = movements.reduce(function (acc, curr, i, arr) {
+  console.log(`${i},and ${acc}`);
+  return acc + curr;
+});
+console.log(balance);
+
+console.log("************FIND METHODS**************");
+const firstWithdrawal = movements.find((mov) => mov < 0);
+console.log(firstWithdrawal);
+
+const ages = [3, 10, 18, 20, 22, 35, 65, 8, 20, 22];
+console.log(ages.includes(-30));
+
+function checkAge(age) {
+  return age > 50;
+}
+console.log(ages.every(checkAge));
+
+const arrayOne = [[1, 2, 3], [4, 5, 6], 7, 8];
+const arrayTwo = [["a", " b", "c"], [11, 22, 33], true, 8.33];
+const arrayThree = [
+  [
+    ["a", " b", "c"],
+    [11, 22, 33],
+  ],
+  true,
+  8.33,
+];
+console.log(arrayOne);
+console.log(arrayOne.flat());
+console.log(arrayTwo.flat());
+console.log(arrayThree.flat(2));
+
+const accountMovements = accounts.map((acc) => acc.movements);
+console.log(accountMovements);
+
+const allMovements = accountMovements.flat(2);
+console.log(allMovements);
+
+const StringArray = ["Jay", "ravi", "alish", "zinu", "pinal"];
+console.log(StringArray);
+console.log(StringArray.sort());
+console.log(ages);
+console.log(ages.sort());
+
+const x = new Array(7);
+console.log(7);
+
+x.fill(32, 2, 5);
+x.fill(2);
+console.log(x);
+
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
