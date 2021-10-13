@@ -155,6 +155,18 @@ const updateUI = function (acc) {
 // Event handlers
 let currentAccount;
 
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+const nowDate = new Date();
+const day = `${nowDate.getDate()}`.padStart(2, 0);
+const month = `${nowDate.getMonth()}`.padStart(2, 0);
+const year = `${nowDate.getFullYear()}`;
+const hour = `${nowDate.getHours()}`;
+const min = `${nowDate.getMinutes()}`;
+
+labelDate.textContent = `${day}/${month}/${year}`;
+
 btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -316,3 +328,80 @@ console.log(8 / 3);
 
 console.log(7 % 2);
 console.log(7 / 2);
+
+const isEven = (n) => n % 2 === 0;
+console.log(isEven(8));
+console.log(isEven(12));
+console.log(isEven(214));
+
+console.log(isEven(5));
+console.log(isEven(49));
+
+// BigInt
+console.log(2 ** 50 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 50 + 1);
+
+console.log(12563655669856988859698569666n);
+console.log(BigInt(125636556698));
+console.log(1000n + 1000n);
+
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == 20);
+console.log(20n / 5n);
+
+// Create a Date
+const now = new Date();
+console.log(now);
+console.log(new Date("Aug 02 2021 18:02:41"));
+
+console.log(new Date(account1.movementsDates[0]));
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
+console.log(new Date(2021, 10, 31));
+
+const future = new Date(2022, 10, 19, 15, 23);
+console.log(future);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime());
+
+console.log(new Date(future.getTime()));
+console.log(Date.now());
+
+future.setFullYear(2025);
+console.log(future);
+console.log(+future);
+
+const daysPassed = (date1, date2) => date1 - date2;
+
+const day1 = daysPassed(new Date(2027, 3, 24), new Date(2027, 3, 14));
+console.log(day1);
+
+labelDate.textContent = new Intl.DateTimeFormat("en-GB").format(now);
+const temp = navigator.language;
+console.log(temp);
+
+const options = {
+  style: "unit",
+  unit: "celsius",
+  currency: "EUR",
+  useGrouping: false,
+};
+const num = 2536665.33;
+console.log("US: ", new Intl.NumberFormat("en-US", options).format(num));
+
+setTimeout(() => console.log("Here is your Pizza 🍕"), 3000);
+setTimeout(() => console.log("Here is your Pizza 🍕"), 4000);
+setTimeout(() => console.log("Here is your Pizza 🍕"), 5000);
+console.log("waiting...");
+
+const ingrediant = ["A", "B", "C"];
