@@ -214,11 +214,21 @@ const tabsContainer = document.querySelectorAll(".operations__tab-container");
 const tabsContent = document.querySelectorAll(".operations__tab__content");
 
 // tabs.forEach((t) => t.addEventListener("click", () => console.log("TAB")));
-tabsContainer.addEventListener("click", function (e) {
-  const clicked = e.target.previousElement;
-  console.log(clicked);
-  if (!clicked) return;
+// tabsContainer.addEventListener("click", function (e) {
+//   const clicked = e.target.previousElement;
+//   console.log(clicked);
+//   if (!clicked) return;
 
-  tabs.forEach((t) => t.classList.remove("operations_tab--active"));
-  clicked.classList.add("operations_tab--active");
-});
+//   tabs.forEach((t) => t.classList.remove("operations_tab--active"));
+//   clicked.classList.add("operations_tab--active");
+// });
+
+console.log(h1);
+h1.firstElementChild.style.color = "black";
+console.log(window.scrollY);
+console.log(window.scrollX);
+
+const obsOpobsCallBack = function() {}
+
+const obsOptions = {}
+const observer = new IntersectionObserver();
