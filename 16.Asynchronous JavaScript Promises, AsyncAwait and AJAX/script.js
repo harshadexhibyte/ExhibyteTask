@@ -103,9 +103,6 @@ const whereAmI = function () {
     .then((data) => renderCountry(data[0]))
     .catch((err) => console.error(`${err.message} 💥`));
 };
-// whereAmI(52.508, 13.381);
-// whereAmI(19.037, 72.873);
-// whereAmI(-33.933, 18.474);
 
 // btn.addEventListener("click", whereAmI);
 
@@ -131,3 +128,81 @@ func1()
   .catch(function () {
     console.log("Harshad: it's vary bad , not resolving");
   });
+
+var promise = new Promise(function (resolve, reject) {
+  const x = "Harshad";
+  const y = "Harshad";
+  if (x === y) {
+    resolve();
+  } else {
+    reject();
+  }
+});
+
+promise
+  .then(function () {
+    console.log("Successfully");
+  })
+  .catch(function () {
+    console.log("Some error");
+  });
+
+function asynchronous() {
+  console.log("One");
+  setTimeout(() => {
+    console.log("Two");
+  }, 200);
+  console.log("Three");
+}
+asynchronous();
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log("lottery Draw is happening");
+  setTimeout(function () {
+    if (Math.random >= 0.5) {
+      resolve("You Win");
+    } else {
+      reject(new Error("You Lost Your Money"));
+    }
+  }, 2000);
+});
+
+lotteryPromise
+  .then((res) => console.log(res))
+  .catch((err) => console.error(err));
+
+async function example() {
+  console.log("Inside The Example Functions");
+  const responce = await fetch("https://api.github.com/users");
+  console.log("Before Responce ");
+  const users = responce.json();
+  console.log("users Resolved");
+  return users;
+}
+console.log(example());
+
+const get3Countries = async function (c1, c2, c3) {
+  try {
+    // const [data1] = await getJSON(
+    //   `https://restcountries.eu/rest/v2/name/${c1}`
+    // );
+    // const [data2] = await getJSON(
+    //   `https://restcountries.eu/rest/v2/name/${c2}`
+    // );
+    // const [data3] = await getJSON(
+    //   `https://restcountries.eu/rest/v2/name/${c3}`
+    // );
+    // console.log(data1.capital, data2.capital, data3.capital);
+
+    Promise.all(
+      getJSON(`https://restcountries.eu/rest/v2/name/${c1}`),
+      getJSON(`https://restcountries.eu/rest/v2/name/${c2}`),
+      getJSON(`https://restcountries.eu/rest/v2/name/${c3}`)
+    );
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+get3Countries("india", "canada", "usa");
+ 
